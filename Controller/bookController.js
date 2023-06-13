@@ -3,11 +3,11 @@ import bookModel from '../Model/bookModel.js';
 export const createBook = async (req,res)=>{
     const {title,author,rating } = req.body;
     try {
-        const book =  await bookModel({title,author,rating});
+        const book = new bookModel({title,author,rating});
+        await book.save();
         res.send({
             message:'Book is Created',
-            status:success,
-            book,
+            book
         })
         
     } catch (error) {
@@ -21,11 +21,10 @@ export const createBook = async (req,res)=>{
 export const getBook =async (req,res)=>{
     const {title,author} = req.body;
     try {
-        const book =  await bookModel.find({title} || {author});
+        const book =  await bookModel.find({title});
         res.send({
             message:'List of books',
-            status:success,
-            book,
+            book
         })
         
     } catch (error) {
@@ -45,11 +44,11 @@ export const UpdateBook =async (req,res)=>{
                 message:'Book Not found',
             })
         }
-        await bookModel.findOneAndUpdate(title,{author,rating});
+        await bookModel.findOneAndUpdate({title},{author,rating});
+        const updatedBook = await bookModel.findOne({title});
         res.send({
             message:'Book is Updated',
-            status:success,
-            book,
+            updatedBook
         })
         
     } catch (error) {
@@ -69,11 +68,10 @@ export const deleteBook =async (req,res)=>{
                 message:'Book Not found',
             })
         }
-        await bookModel.deleteOne({ name} );
+        await bookModel.deleteMany({ title} );
         res.send({
             message:'Book is Deleted',
-            status:success,
-            book,
+            book
         })
         
     } catch (error) {

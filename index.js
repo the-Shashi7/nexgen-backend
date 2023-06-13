@@ -14,6 +14,8 @@ const ConnectToDB = async() => {
 }
 ConnectToDB();
 
+app.use(express.json())
+app.use(express.urlencoded())
 app.use('/api/v1/',Route);
 
 app.listen(PORT,()=>{
