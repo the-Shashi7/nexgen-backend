@@ -1,6 +1,6 @@
 //{Title:"Book",author:"Shadab",rating:5}
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'
 
 const bookSchema = new mongoose.Schema({
     title:{

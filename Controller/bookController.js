@@ -1,4 +1,4 @@
-const bookModel = require('../Model/bookModel.js');
+import bookModel from '../Model/bookModel.js';
 
 export const createBook = async (req,res)=>{
     const {title,author,rating } = req.body;

@@ -1,6 +1,6 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const Route = require('./Route/bookRoute');
+import express from 'express';
+import mongoose from 'mongoose';
+import Route from './Route/bookRoute.js';
 const app =  express();
 const PORT = 8080;
 
