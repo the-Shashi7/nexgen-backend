@@ -4,8 +4,8 @@ const Route = express.Router();
 
 
 Route.get('/getbook', getBook);
-Route.post('/getbook', createBook);
-Route.patch('/getbook', UpdateBook);
-Route.delete('/getbook', deleteBook);
+Route.post('/createbook', createBook);
+Route.patch('/updatebook', UpdateBook);
+Route.delete('/deletebook', deleteBook);
 
 export default Route;
